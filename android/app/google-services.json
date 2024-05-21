@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "389981771330",
+    "project_id": "policyandroid",
+    "storage_bucket": "policyandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389981771330:android:4ad99799f377ee0a733fdb",
+        "android_client_info": {
+          "package_name": "com.policyandroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX4M95pnKlpD11yQthx0zeNHhCMi5pbVo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
