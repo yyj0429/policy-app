@@ -71,3 +71,6 @@ yarn-error.log
 .env.test.local
 .env.production.local
 .env.local
+
+# cOpenAi.ts 파일 포함
+src/api/cOpenAi.ts
