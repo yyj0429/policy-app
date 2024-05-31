@@ -4,7 +4,7 @@ import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 
-import Auth from './src/navigations/Auth';
+import Auth from './src/navigation/Auth';
 
 function App(): React.JSX.Element {
   // TODO: Use Root.tsx
