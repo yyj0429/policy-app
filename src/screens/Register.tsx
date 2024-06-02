@@ -90,8 +90,6 @@ export default function Register() {
         if (error.code === 'auth/invalid-email') {
           Alert.alert('', '이메일 주소가 올바르지 않아요.');
         }
-
-        Alert.alert('', '회원가입에 실패 했습니다!');
       }
     }
   };
@@ -140,9 +138,11 @@ export default function Register() {
         <TextInput
           style={{
             width: 320,
-            height: 36,
+            height: 38,
             borderWidth: 1,
             textAlign: 'center',
+            textAlignVertical: 'center',
+            paddingVertical: 1,
             borderRadius: 4,
             fontSize: 16,
           }}
@@ -163,9 +163,11 @@ export default function Register() {
         <TextInput
           style={{
             width: 320,
-            height: 36,
+            height: 38,
             borderWidth: 1,
             textAlign: 'center',
+            textAlignVertical: 'center',
+            paddingVertical: 1,
             borderRadius: 4,
             fontSize: 16,
           }}
@@ -186,14 +188,15 @@ export default function Register() {
         <TextInput
           style={{
             width: 320,
-            height: 36,
+            height: 38,
             borderWidth: 1,
             textAlign: 'center',
+            textAlignVertical: 'center',
+            paddingVertical: 1,
             borderRadius: 4,
             fontSize: 16,
           }}
           keyboardType="number-pad"
-          secureTextEntry
           onChange={ev => {
             setAge(ev.nativeEvent.text as string);
           }}

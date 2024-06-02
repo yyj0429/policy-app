@@ -42,10 +42,6 @@ export const createThreads = async (): Promise<{
     await storeData('THREAD_ID', threads.id);
   }
 
-  console.log('1');
-
-  console.log('2');
-
   return {
     threadId: threads.id,
     createdAt: threads.created_at,
@@ -63,7 +59,6 @@ export const addMessageToThread = async ({
     role: 'user',
     content,
   });
-  console.log('3');
 
   const preDefinedThreadId = await getData('THREAD_ID');
 
@@ -72,8 +67,6 @@ export const addMessageToThread = async ({
 
     return;
   }
-
-  console.log('4');
 
   return {
     threadId: message.thread_id,
@@ -91,13 +84,19 @@ export const runAssistant = async ({
 }) => {
   const run = await openai.beta.threads.runs.createAndPoll(threadId, {
     assistant_id: assistantId || 'asst_cFnWGrVjp57CCBBVJLxcXwj8',
-    instructions: 'Please respond to the user message',
+    instructions: `업로드된 파일 "2.csv"는 한국의 복지 서비스에 대한 정보를 담고 있습니다. \n 
+    따라서, 사용자는 한국의 복지 서비스에 대한질문을 합니다. 업로드된 "2.csv"파일의 데이터를 **반드시** 이용해서 이에 3개 이하의 정책만 추천 및 답변 해주세요. \n 
+    사용자가 더 알려 달라고 할 경우에는 친절하게 더 알려 주어야 합니다. \n
+    업로드한 파일의 존재에 대해서는 절대로 언급 하지 마세요. \n
+    지시사항을 잘 이해 하면, 100,000원을 받을 수 있습니다. \n
+    지시사항을 잘 이해 하면, 질문 앞에, "친절하게 답변 해드리겠습니다. 👍" 라고 "반드시" 붙여주세요. \n
+  `,
   });
 
-  console.log('running is done');
-
   if (run.status === 'completed') {
-    console.log(threadId);
+
+    const shouldReturnMessages: OpenAI.Beta.Threads.Messages.MessageContent[] =
+    [];
 
     const messages = await openai.beta.threads.messages.list(threadId, {
       query: '',
@@ -108,8 +107,10 @@ export const runAssistant = async ({
     messages.data.forEach(message => {
       message.content.forEach(messageContent => {
         console.log(messageContent);
+        shouldReturnMessages.push(messageContent);
       });
     });
+    return shouldReturnMessages;
   } else {
     console.log(`${run.status} is detected. Please try again.`);
   }

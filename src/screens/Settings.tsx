@@ -9,7 +9,7 @@ export default function () {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Typography>Settings.tsx</Typography>
+       <Typography>신규 정책은 곧 오픈 예정입니다.</Typography>
     </View>
   );
 }
